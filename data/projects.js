@@ -95,7 +95,6 @@ window.PROJECTS = [
       "Live microphone testing found bugs that a spec review missed, including language misdetection on short clips and a gap in MCP scoping.",
       "Benchmarking showed int8 was about 10x slower than fp32 on the target CPU (RTF 3.65 vs 0.31), so fp32 is the default."
     ],
-    figure: { type: "video", src: "assets/eruvoice.mp4", poster: "assets/eruvoice.jpg", caption: "Push to talk, a spoken answer, and a note edited by voice.", sound: true },
     stack: ["Claude Code CLI", "MCP", "faster-whisper", "Kokoro-82M"]
   },
   {
