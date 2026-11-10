@@ -3,263 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ralf Hernandez | LLM Systems and Evaluation</title>
-  <meta name="description" content="Ralf Hernandez builds RAG pipelines, LLM-as-judge evaluation, and MCP tooling for AI agents.">
-  <meta property="og:title" content="Ralf Hernandez | LLM Systems and Evaluation">
-  <meta property="og:description" content="RAG pipelines, LLM-as-judge evaluation, and MCP tooling for agents.">
+  <title>Ralf Hernandez</title>
+  <meta name="description" content="Ralf Hernandez, software engineer working on LLM retrieval, evaluation, and agent tooling.">
+  <meta property="og:title" content="Ralf Hernandez">
+  <meta property="og:description" content="Software engineer working on LLM retrieval, evaluation, and agent tooling.">
+  <meta name="theme-color" content="#f4f3ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1011" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="brand">Ralf Hernandez</a>
-      <nav aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+<body data-page="index">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar wrap">
+    <a href="./" class="mark" aria-label="Ralf Hernandez, home">RH</a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#papers">Papers</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero wrap">
-      <div class="hero-copy reveal">
-        <h1>I build LLM systems, and the evals that show where they fail.</h1>
-        <p class="lede">RAG pipelines, LLM-as-judge evaluation, and MCP tooling for agents. PRICAI 2026 author, Outstanding Thesis Award.</p>
-        <div class="ctas">
-          <a class="btn btn-primary" href="#work">Selected work <i class="ph ph-arrow-down"></i></a>
-          <a class="btn btn-ghost" href="https://github.com/Ralf090102" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i> GitHub</a>
-        </div>
-      </div>
-      <dl class="hero-stats reveal" style="--d:1">
-        <div class="stat">
-          <dt class="num">5% <span class="arrow">to</span> 60%</dt>
-          <dd>Legal QA accuracy after an ablation separated prompt engineering from retrieval</dd>
-        </div>
-        <div class="stat">
-          <dt class="num">18-28%</dt>
-          <dd>English vs Filipino gap, traced to embedding misalignment</dd>
-        </div>
-        <div class="stat">
-          <dt class="num">3 tiers</dt>
-          <dd>Failure taxonomy (retrieval, generation, cultural), accepted at PRICAI 2026</dd>
-        </div>
-      </dl>
+  <main id="main">
+    <section class="intro wrap">
+      <h1 class="name">Ralf Hernandez</h1>
+      <p class="role">Software engineer working on LLM retrieval, evaluation, and agent tooling.</p>
     </section>
 
-    <!-- Featured: WiQAS -->
-    <section id="work" class="wrap case case-split">
-      <div class="case-copy reveal">
-        <p class="eyebrow">Selected work</p>
-        <h2>WiQAS</h2>
-        <p class="sub">Filipino cultural question answering, grounded in retrieved evidence</p>
-        <p>Students can find Filipino heritage content online but rarely verify it. WiQAS answers only from retrieved sources, so every answer can be checked.</p>
-        <ul class="points">
-          <li><strong>Cultural LLM Judge.</strong> A custom judge prompt and rubric alongside RAGAS, built for a low-resource language rather than borrowed from English benchmarks.</li>
-          <li><strong>Failure analysis.</strong> Eight pipeline configurations produced a three-tier taxonomy: retrieval, generation, and cultural failure. Cultural failures are often silent.</li>
-          <li><strong>Result.</strong> Outstanding Thesis Award, and the basis of a PRICAI 2026 paper.</li>
-        </ul>
-        <p class="stack">BM25 + BGE-M3 hybrid retrieval, Gemma and SEA-LION via Ollama, RAGAS</p>
-        <a class="link" href="https://github.com/Ralf090102/WiQAS" target="_blank" rel="noopener">View repository <i class="ph ph-arrow-up-right"></i></a>
-      </div>
-      <figure class="media reveal" style="--d:1" data-autoplay>
-        <video muted loop playsinline preload="metadata" poster="assets/wiqas-poster.jpg">
-          <source src="assets/wiqas.mp4" type="video/mp4">
-        </video>
-        <figcaption>A Filipino-language question answered with cited sources.</figcaption>
-      </figure>
+    <section id="work" class="wrap" aria-labelledby="work-h">
+      <h2 id="work-h" class="section-h">Work</h2>
+      <ol class="index" id="index"></ol>
+      <noscript><p>The project list needs JavaScript. All source code is on <a href="https://github.com/Ralf090102">GitHub</a>.</p></noscript>
     </section>
 
-    <!-- Featured: Lex -->
-    <section class="wrap case case-stack">
-      <div class="case-copy reveal">
-        <h2>Lex</h2>
-        <p class="sub">When does retrieval earn its cost over prompting alone?</p>
-        <p>A RAG assistant for the Philippine Revised Penal Code, built with a course partner. We ran an ablation on 20 legal queries to separate what prompt engineering contributes from what retrieval contributes.</p>
-      </div>
-      <figure class="ablation reveal" style="--d:1" aria-label="Accuracy by condition">
-        <div class="bar-row" style="--v:5">
-          <span class="bar-label">Baseline LLM</span>
-          <span class="bar"><span></span></span>
-          <span class="bar-val">5%</span>
-        </div>
-        <div class="bar-row" style="--v:30">
-          <span class="bar-label">Prompt engineering only</span>
-          <span class="bar"><span></span></span>
-          <span class="bar-val">30%</span>
-        </div>
-        <div class="bar-row is-top" style="--v:60">
-          <span class="bar-label">RAG + prompt engineering</span>
-          <span class="bar"><span></span></span>
-          <span class="bar-val">60%</span>
-        </div>
-        <figcaption>Prompting added 25 points and retrieval added 30. Retrieval mattered most for exact statutory facts such as article numbers and amendment dates. The base model already handled broad doctrine like transferred intent.</figcaption>
-      </figure>
-      <div class="lex-taxonomy reveal" style="--d:2">
-        <p class="mono-label">Failure modes found, each with a proposed fix</p>
-        <ul class="chips">
-          <li>Retrieval miss</li>
-          <li>Hallucination and precision errors</li>
-          <li>Formatting and similarity underperformance</li>
-          <li>Statutory metadata confusion</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Featured: Orion + EruVoice -->
-    <section class="wrap pair">
-      <article class="pair-item reveal">
-        <figure class="media" data-autoplay>
-          <video muted loop playsinline preload="metadata" poster="assets/orion-poster.jpg">
-            <source src="assets/orion.mp4" type="video/mp4">
-          </video>
-        </figure>
-        <h3>Orion</h3>
-        <p class="sub">A local, private RAG assistant</p>
-        <p>Chat over a personal knowledge base with no cloud dependency. It uses hybrid retrieval with cross-encoder reranking, generation through Ollama, and voice output. It ships as a Tauri desktop app with a bundled Python runtime. Getting it to install cleanly meant fixing packaging bugs, such as CORS and static-adapter issues, that only appear in a real install.</p>
-        <p class="stack">FastAPI, ChromaDB + BM25, SvelteKit, Tauri</p>
-        <a class="link" href="https://github.com/Ralf090102/Orion" target="_blank" rel="noopener">View repository <i class="ph ph-arrow-up-right"></i></a>
-      </article>
-      <article class="pair-item reveal" style="--d:1">
-        <figure class="media media-sound">
-          <video controls playsinline preload="metadata" poster="assets/eruvoice-poster.jpg">
-            <source src="assets/eruvoice.mp4" type="video/mp4">
-          </video>
-        </figure>
-        <h3>EruVoice</h3>
-        <p class="sub">Talk to a notes vault, and it can act</p>
-        <p>Speech goes through faster-whisper, then to Claude Code limited to a single vault MCP server, then back out through Piper or Kokoro TTS. The system prompt tells Claude the input is a transcription that may be wrong, so it asks before acting on an unclear command. Benchmarking showed int8 was about 10x slower than fp32 on the target CPU, so fp32 is the default.</p>
-        <p class="stack">Claude Code CLI, MCP, faster-whisper, Kokoro-82M</p>
-        <span class="link muted">Private repository</span>
-      </article>
-    </section>
-
-    <!-- Agent infrastructure -->
-    <section class="wrap infra">
-      <h2 class="reveal">Tooling for agents</h2>
-      <div class="infra-grid">
-        <article class="infra-card reveal">
-          <h3>Erudition</h3>
-          <p class="sub">Portable, git-backed memory for AI agents</p>
-          <p>An MCP server with 9 tools and Claude Code SessionStart and Stop hooks. Search uses a rebuildable SQLite FTS5 index over markdown files. To check the 82-test suite, I broke the path-traversal guard and the staleness check on purpose and confirmed the tests caught both.</p>
-          <a class="link" href="https://github.com/Ralf090102/Erudition" target="_blank" rel="noopener">View repository <i class="ph ph-arrow-up-right"></i></a>
-        </article>
-        <article class="infra-card reveal" style="--d:1">
-          <h3>Lyra</h3>
-          <p class="sub">Typed pipeline stages an agent can call directly</p>
-          <p>Wraps retrieve, rerank, generate, and eval stages behind one interface and an MCP tool surface, so an agent calls <code>run_stage</code> instead of reading scripts. It works with both a CLI codebase (WiQAS) and a FastAPI service (Orion) with no changes to shared code.</p>
-          <a class="link" href="https://github.com/Ralf090102/lyra-mcp" target="_blank" rel="noopener">View repository <i class="ph ph-arrow-up-right"></i></a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications" class="wrap pubs">
-      <h2 class="reveal">Publications</h2>
-      <ol class="pub-list">
-        <li class="reveal">
-          <span class="pub-venue">PRICAI 2026</span>
-          <p class="pub-title">Cultural Failure as a Third Tier of RAG Failure: Taxonomy, Silent Failures, and Empirical Validation in a Low-Resource Language Setting</p>
-          <p class="pub-meta">Cheng, C., Hernandez, R.W., Ortiz, M.C., Santos, A.L., Montalan, J.R. Accepted, Guangzhou, November 2026.</p>
-        </li>
-        <li class="reveal" style="--d:1">
-          <span class="pub-venue">Entertainment Computing</span>
-          <p class="pub-title">A No-Code Augmented Reality Authoring Tool for Creating AR Tabletop Interactive Quizzes</p>
-          <p class="pub-meta">Del Gallego, N.P., Hernandez, R.W., Too, K.S., Lim, R.K., Ilao, J. Vol. 58, 101187 (2026). <a href="https://doi.org/10.1016/j.entcom.2026.101187" target="_blank" rel="noopener">DOI</a></p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Other work -->
-    <section class="wrap other">
-      <h2 class="reveal">Other work</h2>
-      <div class="other-grid">
-        <a class="tile reveal" href="https://github.com/Ralf090102/Job-Application-Tracker" target="_blank" rel="noopener">
-          <h3>Job Application Tracker</h3>
-          <p>Paste a job posting and a local model extracts the fields and flags red flags. Laravel and React.</p>
-        </a>
-        <a class="tile reveal" href="https://github.com/Ralf090102/Proteus" target="_blank" rel="noopener">
-          <h3>Proteus</h3>
-          <p>A local document converter with Windows shell integration. New format pairs are a two-line addition.</p>
-        </a>
-        <a class="tile reveal" href="https://github.com/Ralf090102/Task-Manager-Web-Application" target="_blank" rel="noopener">
-          <h3>TMWA</h3>
-          <p>A learning build that went from monolith to 8 microservices on Kubernetes, with ArgoCD canaries and Prometheus.</p>
-        </a>
-        <a class="tile reveal" href="https://github.com/DLSU-GAME-Lab/Anito-3DBenchmark" target="_blank" rel="noopener">
-          <h3>Anito-3DBenchmark</h3>
-          <p>A C++ rendering benchmark comparing Vulkan, DirectX 11, and high-level engines. DLSU GameLab.</p>
-        </a>
-        <a class="tile reveal" href="https://github.com/DLSU-GAME-Lab/Project-VoyagAR" target="_blank" rel="noopener">
-          <h3>Project-VoyagAR</h3>
-          <p>A no-code AR quiz authoring tool in Unity and Vuforia. Exhibited at PGDX 2025.</p>
-        </a>
-        <div class="tile">
-          <h3>GGCN Website</h3>
-          <p>A nonprofit client site built by a 6-person Scrum team. SvelteKit, Supabase, and CI/CD.</p>
-        </div>
-        <div class="tile">
-          <h3>GABAY</h3>
-          <p>A nonprofit client site built by a 4-person team. Full stack, including payment integration.</p>
-        </div>
-        <a class="tile reveal" href="https://github.com/Ralf090102/SonuSync" target="_blank" rel="noopener">
-          <h3>SonuSync</h3>
-          <p>An Android music player in Kotlin with ExoPlayer.</p>
-        </a>
-      </div>
+    <section id="papers" class="wrap" aria-labelledby="papers-h">
+      <h2 id="papers-h" class="section-h">Papers</h2>
+      <ol class="papers" id="papers-list"></ol>
     </section>
   </main>
 
-  <footer id="contact" class="footer">
-    <div class="wrap footer-inner">
-      <h2>Get in touch</h2>
-      <ul class="contact">
-        <li><a href="mailto:ralf.hernandez090102@gmail.com"><i class="ph ph-envelope-simple"></i> ralf.hernandez090102@gmail.com</a></li>
-        <li><a href="https://www.linkedin.com/in/ralf-hernandez" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo"></i> LinkedIn</a></li>
-        <li><a href="https://github.com/Ralf090102" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i> GitHub</a></li>
-      </ul>
-    </div>
+  <footer id="contact" class="footer wrap">
+    <h2 class="section-h">Contact</h2>
+    <a class="email" href="mailto:ralf.hernandez090102@gmail.com">ralf.hernandez090102@gmail.com</a>
+    <ul class="elsewhere">
+      <li><a href="https://github.com/Ralf090102" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ralf-hernandez" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
   </footer>
 
-  <script>
-    // Media: drop a figure whose video is missing, so the layout falls back to text only.
-    document.querySelectorAll('figure.media').forEach(fig => {
-      const video = fig.querySelector('video');
-      const source = fig.querySelector('source');
-      const drop = () => {
-        const host = fig.closest('.case, .pair-item');
-        fig.remove();
-        if (host) host.classList.add('no-media');
-      };
-      source.addEventListener('error', drop);
-      video.addEventListener('error', drop);
-    });
+  <div class="preview" id="preview" aria-hidden="true"></div>
 
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Autoplay muted clips only while visible; with reduced motion, show controls instead.
-    document.querySelectorAll('figure[data-autoplay] video').forEach(v => {
-      if (reduce) { v.controls = true; return; }
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
-      }, { threshold: 0.4 }).observe(v);
-    });
-
-    // Reveal on scroll.
-    if (!reduce && 'IntersectionObserver' in window) {
-      document.documentElement.classList.add('js-reveal');
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    }
-  </script>
+  <script src="data/projects.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
