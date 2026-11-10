@@ -96,6 +96,7 @@
       if (!html) return hide();
       box.innerHTML = html;
       box.dataset.type = f.type;
+      box.style.aspectRatio = f.ratio || "";
       box.classList.add("on");
       place();
     }
@@ -157,7 +158,7 @@
       if (f.type === "image") figure = `<figure class="case-fig"><img src="${esc(f.src)}" alt="${esc(f.alt || f.caption || p.title)}">${cap}</figure>`;
       if (f.type === "video") {
         const auto = !f.sound && !reduceMotion;
-        figure = `<figure class="case-fig"><video src="${esc(f.src)}" poster="${esc(f.poster || "")}" playsinline preload="metadata" ${auto ? "muted loop autoplay" : "controls"}></video>${cap}</figure>`;
+        figure = `<figure class="case-fig"><video src="${esc(f.src)}" poster="${esc(f.poster || "")}"${f.ratio ? ` style="aspect-ratio:${esc(f.ratio)}"` : ""} playsinline preload="metadata" ${auto ? "muted loop autoplay" : "controls"}></video>${cap}</figure>`;
       }
     }
 

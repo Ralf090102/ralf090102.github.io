@@ -1,7 +1,7 @@
 // All site content lives here. To add a project, add one object to PROJECTS.
 // Required: id, title, kind, oneLiner. Everything else is optional and only renders if present.
 // The array order is the display order on the index.
-// figure: { type: "video", src, poster, caption, sound? } | { type: "image", src, alt, caption }
+// figure: { type: "video", src, poster, caption, ratio?, sound? }  (ratio: "w / h", defaults to 16 / 9) | { type: "image", src, alt, caption }
 //       | { type: "chart", unit, bars: [{ label, value, highlight? }], caption }
 
 window.PROJECTS = [
@@ -24,7 +24,7 @@ window.PROJECTS = [
       "An 18-28% English vs Filipino performance gap, traced to embedding misalignment in retrieval.",
       "Outstanding Thesis Award, and the basis of a paper accepted at PRICAI 2026."
     ],
-    figure: { type: "video", src: "assets/wiqas.mp4", poster: "assets/wiqas.jpg", caption: "A Filipino-language question answered with cited sources." },
+    figure: { type: "video", src: "assets/wiqas.mp4", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
     stack: ["Python", "BM25", "BGE-M3", "Ollama", "RAGAS"],
     repo: "https://github.com/Ralf090102/WiQAS"
   },
@@ -32,6 +32,7 @@ window.PROJECTS = [
     id: "lex",
     title: "Lex",
     kind: "Ablation study",
+    year: 2026,
     context: "Course project, DLSU NLP1000, with a course partner",
     oneLiner: "A legal assistant for the Philippine Revised Penal Code, used to measure what prompting contributes and what retrieval contributes.",
     problem: "When a RAG system works, it is rarely clear whether the retrieval or the prompt did the work. We built a legal assistant over Act No. 3815 and ran an ablation on 20 legal queries to separate the two.",
@@ -73,7 +74,7 @@ window.PROJECTS = [
       "Installs and runs without a Python setup on the user's machine.",
       "Fixed packaging bugs, such as CORS and static-adapter issues, that only appear when a Python backend ships inside a desktop app."
     ],
-    figure: { type: "video", src: "assets/orion.mp4", poster: "assets/orion.jpg", caption: "Asking Orion about a local knowledge base." },
+    figure: { type: "video", src: "assets/orion.mp4", poster: "assets/orion.jpg", ratio: "1440 / 756", sound: true, caption: "A question answered from local course notes, with page citations and the reply read aloud." },
     stack: ["Python", "FastAPI", "ChromaDB", "SvelteKit", "Tauri"],
     repo: "https://github.com/Ralf090102/Orion"
   },
@@ -212,6 +213,7 @@ window.PROJECTS = [
     id: "ggcn",
     title: "GGCN Website",
     kind: "Client web app",
+    year: 2025,
     context: "Nonprofit client, 6-person Scrum team",
     oneLiner: "A website for Grace Gospel Church North, with attendance tracking and reports.",
     built: [
@@ -224,6 +226,7 @@ window.PROJECTS = [
     id: "gabay",
     title: "GABAY",
     kind: "Client web app",
+    year: 2024,
     context: "Nonprofit client, 4-person Scrum team",
     oneLiner: "A website for a Caloocan City nonprofit. I worked on both the frontend and the backend.",
     built: [
@@ -236,6 +239,7 @@ window.PROJECTS = [
     id: "sonusync",
     title: "SonuSync",
     kind: "Android app",
+    year: 2024,
     context: "Personal project",
     oneLiner: "A music player in Kotlin with an expandable player and media controls.",
     stack: ["Kotlin", "ExoPlayer"],
