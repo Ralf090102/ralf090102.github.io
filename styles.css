@@ -293,8 +293,17 @@ img, video { display: block; max-width: 100%; }
   .contact-card .email { font-size: 24px; }
   .contact-card .links { font-size: 12px; }
 
-  /* Case page: the details stack above the content. */
-  .side-case { gap: 28px; }
+  /* Case page: back link, then the title and one-liner, then the details and section links, then the content.
+     The sidebar and main column dissolve (display: contents) so their children can be reordered without
+     touching the markup; the desktop order is unchanged. */
+  [data-page="project"] .shell { gap: 40px; }
+  [data-page="project"] .side, [data-page="project"] .content { display: contents; }
+  [data-page="project"] .side-top { order: 0; padding-top: 24px; }
+  [data-page="project"] .case-head { order: 1; }
+  [data-page="project"] .details { order: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; padding-top: 24px; border-top: 1px solid var(--line); }
+  [data-page="project"] .details > div:has(.tags) { grid-column: 1 / -1; }
+  [data-page="project"] .side-nav { order: 3; }
+  [data-page="project"] .content > :not(.case-head) { order: 4; }
   .case-head { padding-top: 0; }
   .fig.is-portrait .fig-frame { max-width: 300px; }
   .stats dd { font-size: 40px; }
