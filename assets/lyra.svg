@@ -1,0 +1,48 @@
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 512" role="img" aria-label="System diagram of Lyra: Claude Code calls five MCP tools on the Lyra server, which go through one typed stage core; separate adapters for WiQAS and Orion run each project&#x27;s own Python environment as a subprocess, speaking JSON over stdin and stdout.">
+<defs><marker id="lyra-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrow" d="M0 1 L9 5 L0 9 z"/></marker></defs>
+<rect class="dg-box" x="20" y="60" width="170" height="64" rx="6"/>
+<text class="dg-t" x="32" y="89">Claude Code</text>
+<text class="dg-s" x="32" y="107">the agent</text>
+<rect class="dg-box dg-hi" x="250" y="40" width="230" height="150" rx="6"/>
+<text class="dg-t" x="262" y="68">Lyra MCP server</text>
+<text class="dg-s" x="262" y="86">list_stages</text>
+<text class="dg-s" x="262" y="104">get_stage_config</text>
+<text class="dg-s" x="262" y="122">set_stage_config</text>
+<text class="dg-s" x="262" y="140">run_stage</text>
+<text class="dg-s" x="262" y="158">run_pipeline</text>
+<rect class="dg-box" x="540" y="40" width="230" height="150" rx="6"/>
+<text class="dg-t" x="552" y="68">Typed stage core</text>
+<text class="dg-s" x="552" y="86">pydantic schemas</text>
+<text class="dg-s" x="552" y="104">stage registry</text>
+<text class="dg-s" x="552" y="122">pipeline executor</text>
+<text class="dg-s" x="552" y="140">subprocess runner</text>
+<rect class="dg-box" x="830" y="40" width="150" height="64" rx="6"/>
+<text class="dg-t" x="842" y="69">Pipeline graph</text>
+<text class="dg-s" x="842" y="87">JSON file</text>
+<rect class="dg-frame" x="180" y="245" width="640" height="125" rx="8"/>
+<text class="dg-k" x="500" y="265" text-anchor="middle">ADAPTERS: NEW FILES ONLY</text>
+<rect class="dg-box" x="200" y="285" width="280" height="64" rx="6"/>
+<text class="dg-t" x="212" y="314">WiQAS adapter</text>
+<text class="dg-s" x="212" y="332">retrieve, rerank, eval</text>
+<rect class="dg-box" x="520" y="285" width="280" height="64" rx="6"/>
+<text class="dg-t" x="532" y="314">Orion adapter</text>
+<text class="dg-s" x="532" y="332">retrieve, rerank</text>
+<rect class="dg-box" x="200" y="430" width="280" height="64" rx="6"/>
+<text class="dg-t" x="212" y="459">WiQAS</text>
+<text class="dg-s" x="212" y="477">scripts, in its own venv</text>
+<rect class="dg-box" x="520" y="430" width="280" height="64" rx="6"/>
+<text class="dg-t" x="532" y="459">Orion</text>
+<text class="dg-s" x="532" y="477">FastAPI service, in its own venv</text>
+<path class="dg-e" d="M190 92 L248 92" marker-end="url(#lyra-arr)"/>
+<text class="dg-l" x="219" y="84" text-anchor="middle">MCP</text>
+<path class="dg-e" d="M480 115 L538 115" marker-end="url(#lyra-arr)"/>
+<path class="dg-e" d="M830 72 L772 72" marker-end="url(#lyra-arr)"/>
+<path class="dg-e" d="M655 190 L655 220"/>
+<path class="dg-e" d="M340 220 L660 220"/>
+<path class="dg-e" d="M340 220 L340 283" marker-end="url(#lyra-arr)"/>
+<path class="dg-e" d="M660 220 L660 283" marker-end="url(#lyra-arr)"/>
+<path class="dg-e" d="M340 349 L340 428" marker-end="url(#lyra-arr)"/>
+<text class="dg-l" x="350" y="394" text-anchor="start">subprocess, JSON over stdio</text>
+<path class="dg-e" d="M660 349 L660 428" marker-end="url(#lyra-arr)"/>
+<text class="dg-l" x="670" y="394" text-anchor="start">same runner, unchanged</text>
+</svg>

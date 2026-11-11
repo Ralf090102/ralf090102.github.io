@@ -23,8 +23,25 @@
     return probes[url];
   }
 
+  // Diagrams are inlined, not <img>, so they pick up the page's theme tokens and fonts.
+  const svgs = {};
+  function loadSVG(url) {
+    if (!svgs[url]) {
+      svgs[url] = fetch(url)
+        .then((r) => (r.ok ? r.text() : ""))
+        .then((t) => (t.trim().startsWith("<svg") ? t : ""))
+        .catch(() => "");
+    }
+    return svgs[url];
+  }
+  const isPortrait = (f) => {
+    if (!f.ratio) return false;
+    const [w, h] = f.ratio.split("/").map(Number);
+    return h > w;
+  };
+
   function chartHTML(fig) {
-    const max = Math.max(100, ...fig.bars.map((b) => b.value));
+    const max = fig.max || Math.max(100, ...fig.bars.map((b) => b.value));
     return `<div class="chart">${fig.bars.map((b) => `
       <div class="chart-row${b.highlight ? " is-hi" : ""}">
         <span class="chart-label">${esc(b.label)}</span>
@@ -86,6 +103,8 @@
       let html = "";
       if (f.type === "chart") {
         html = chartHTML(f);
+      } else if (f.type === "diagram") {
+        html = await loadSVG(f.src);
       } else if (await exists(f.poster || f.src)) {
         if (current !== id) return;
         html = f.type === "video"
@@ -96,7 +115,8 @@
       if (!html) return hide();
       box.innerHTML = html;
       box.dataset.type = f.type;
-      box.style.aspectRatio = f.ratio || "";
+      box.style.aspectRatio = isPortrait(f) ? "" : f.ratio || "";
+      box.toggleAttribute("data-portrait", isPortrait(f));
       box.classList.add("on");
       place();
     }
@@ -143,7 +163,17 @@
       ["Source", p.repo ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener">${esc(p.repo.replace("https://github.com/", ""))}</a>` : "Private repository"]
     ].filter(Boolean);
 
-    const list = (items) => `<ul class="points">${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
+    // A list item is a string, or { text, chart } to back that one claim with its numbers.
+    const item = (t) => {
+      if (typeof t === "string") return `<li>${esc(t)}</li>`;
+      const c = t.chart;
+      const fig = c ? `<figure class="point-chart">${chartHTML(c)}${c.caption ? `<figcaption>${esc(c.caption)}</figcaption>` : ""}</figure>` : "";
+      return `<li>${esc(t.text)}${fig}</li>`;
+    };
+    const list = (items) => `<ul class="points">${items.map(item).join("")}</ul>`;
+    const stats = p.stats && p.stats.length
+      ? `<dl class="stats">${p.stats.map((s) => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.value)}</dd></div>`).join("")}</dl>`
+      : "";
     const blocks = [
       p.problem && ["Problem", `<p>${esc(p.problem)}</p>`],
       p.built && p.built.length && ["What I built", list(p.built)],
@@ -156,9 +186,10 @@
       const cap = f.caption ? `<figcaption>${esc(f.caption)}</figcaption>` : "";
       if (f.type === "chart") figure = `<figure class="case-fig is-chart">${chartHTML(f)}${cap}</figure>`;
       if (f.type === "image") figure = `<figure class="case-fig"><img src="${esc(f.src)}" alt="${esc(f.alt || f.caption || p.title)}">${cap}</figure>`;
+      if (f.type === "diagram") figure = `<figure class="case-fig is-diagram"><div class="dg-scroll"></div>${cap}</figure>`;
       if (f.type === "video") {
         const auto = !f.sound && !reduceMotion;
-        figure = `<figure class="case-fig"><video src="${esc(f.src)}" poster="${esc(f.poster || "")}"${f.ratio ? ` style="aspect-ratio:${esc(f.ratio)}"` : ""} playsinline preload="metadata" ${auto ? "muted loop autoplay" : "controls"}></video>${cap}</figure>`;
+        figure = `<figure class="case-fig${isPortrait(f) ? " is-portrait" : ""}"><video src="${esc(f.src)}" poster="${esc(f.poster || "")}"${f.ratio ? ` style="aspect-ratio:${esc(f.ratio)}"` : ""} playsinline preload="metadata" ${auto ? "muted loop autoplay" : "controls"}></video>${cap}</figure>`;
       }
     }
 
@@ -171,6 +202,7 @@
       </div>
       <dl class="case-meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
       ${figure}
+      ${stats}
       ${blocks.map(([h, body]) => `<section class="block"><h2>${h}</h2><div>${body}</div></section>`).join("")}
       <nav class="case-nav" aria-label="More projects">
         <a href="${href(prev)}"><span>Previous</span>${esc(prev.title)}</a>
@@ -180,6 +212,8 @@
     // Drop the figure if its media file is missing, so the page reads as text only.
     const media = main.querySelector(".case-fig video, .case-fig img");
     if (media) media.addEventListener("error", () => media.closest("figure").remove());
+    const slot = main.querySelector(".dg-scroll");
+    if (slot) loadSVG(f.src).then((svg) => (svg ? (slot.innerHTML = svg) : slot.closest("figure").remove()));
   }
 
   if (document.body.dataset.page === "project") renderCase();

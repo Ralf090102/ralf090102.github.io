@@ -1,0 +1,86 @@
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 624" role="img" aria-label="System diagram of TMWA: GitHub Actions builds images, ArgoCD syncs a Helm chart into Kubernetes, where an NGINX ingress fronts a Next.js app that calls eight microservices, Redis, MinIO and Meilisearch, with PostgreSQL on Supabase outside the cluster.">
+<defs><marker id="tmwa-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrow" d="M0 1 L9 5 L0 9 z"/></marker></defs>
+<rect class="dg-box" x="40" y="20" width="210" height="60" rx="6"/>
+<text class="dg-t" x="52" y="47">GitHub Actions</text>
+<text class="dg-s" x="52" y="65">test, scan, 9 images</text>
+<rect class="dg-box" x="320" y="20" width="180" height="60" rx="6"/>
+<text class="dg-t" x="332" y="47">ArgoCD</text>
+<text class="dg-s" x="332" y="65">syncs the Helm chart</text>
+<rect class="dg-box" x="540" y="20" width="190" height="60" rx="6"/>
+<text class="dg-t" x="552" y="47">Prometheus, Grafana</text>
+<text class="dg-s" x="552" y="65">Loki logs, 5 alerts</text>
+<path class="dg-e" d="M250 50 L318 50" marker-end="url(#tmwa-arr)"/>
+<text class="dg-l" x="285" y="42" text-anchor="middle">image tag</text>
+<path class="dg-e" d="M410 80 L410 108" marker-end="url(#tmwa-arr)"/>
+<rect class="dg-frame" x="20" y="110" width="720" height="504" rx="8"/>
+<text class="dg-k" x="34" y="132" text-anchor="start">KUBERNETES, HELM</text>
+<rect class="dg-box" x="40" y="148" width="170" height="50" rx="6"/>
+<text class="dg-t" x="52" y="170">NGINX Ingress</text>
+<text class="dg-s" x="52" y="188">task-manager.local</text>
+<rect class="dg-box dg-hi" x="40" y="240" width="170" height="130" rx="6"/>
+<text class="dg-t" x="52" y="268">Next.js 16 app</text>
+<text class="dg-s" x="52" y="286">22 API routes</text>
+<text class="dg-s" x="52" y="304">canary rollouts</text>
+<text class="dg-s" x="52" y="322">HPA on req/s</text>
+<rect class="dg-box" x="40" y="540" width="170" height="56" rx="6"/>
+<text class="dg-t" x="52" y="565">Redis</text>
+<text class="dg-s" x="52" y="583">cache, BullMQ</text>
+<rect class="dg-box" x="280" y="148" width="170" height="50" rx="6"/>
+<text class="dg-t" x="292" y="170">realtime</text>
+<text class="dg-s" x="292" y="188">Socket.io</text>
+<rect class="dg-box" x="280" y="240" width="170" height="44" rx="6"/>
+<text class="dg-t" x="292" y="267">team-service</text>
+<rect class="dg-box" x="280" y="298" width="170" height="44" rx="6"/>
+<text class="dg-t" x="292" y="325">file-service</text>
+<rect class="dg-box" x="280" y="356" width="170" height="44" rx="6"/>
+<text class="dg-t" x="292" y="383">analytics</text>
+<rect class="dg-box" x="280" y="414" width="170" height="44" rx="6"/>
+<text class="dg-t" x="292" y="441">webhook</text>
+<rect class="dg-box" x="280" y="540" width="170" height="56" rx="6"/>
+<text class="dg-t" x="292" y="565">worker</text>
+<text class="dg-s" x="292" y="583">BullMQ jobs</text>
+<rect class="dg-box" x="520" y="148" width="200" height="50" rx="6"/>
+<text class="dg-t" x="532" y="170">notification</text>
+<text class="dg-s" x="532" y="188">email, in-app</text>
+<rect class="dg-box" x="520" y="218" width="200" height="50" rx="6"/>
+<text class="dg-t" x="532" y="240">scheduler, CronJob</text>
+<text class="dg-s" x="532" y="258">recurring tasks</text>
+<rect class="dg-box" x="520" y="298" width="200" height="44" rx="6"/>
+<text class="dg-t" x="532" y="325">MinIO</text>
+<rect class="dg-box" x="520" y="470" width="200" height="50" rx="6"/>
+<text class="dg-t" x="532" y="492">Meilisearch</text>
+<text class="dg-s" x="532" y="510">full-text search</text>
+<rect class="dg-box" x="520" y="546" width="200" height="50" rx="6"/>
+<text class="dg-t" x="532" y="568">search-sync</text>
+<text class="dg-s" x="532" y="586">Postgres to index</text>
+<rect class="dg-box" x="790" y="148" width="190" height="50" rx="6"/>
+<text class="dg-t" x="802" y="170">SMTP</text>
+<text class="dg-s" x="802" y="188">email delivery</text>
+<rect class="dg-box" x="790" y="240" width="190" height="130" rx="6"/>
+<text class="dg-t" x="802" y="268">PostgreSQL</text>
+<text class="dg-s" x="802" y="286">on Supabase</text>
+<text class="dg-s" x="802" y="304">shared schema</text>
+<text class="dg-s" x="802" y="322">used by the app</text>
+<text class="dg-s" x="802" y="340">and most services</text>
+<rect class="dg-box" x="790" y="414" width="190" height="44" rx="6"/>
+<text class="dg-t" x="802" y="441">Webhook endpoints</text>
+<path class="dg-e" d="M125 198 L125 238" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M210 163 L278 163" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M210 260 L245 260"/>
+<path class="dg-e" d="M245 183 L245 436"/>
+<path class="dg-e" d="M245 183 L278 183" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M245 262 L278 262" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M245 320 L278 320" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M245 378 L278 378" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M245 436 L278 436" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M125 370 L125 538" marker-end="url(#tmwa-arr)"/>
+<text class="dg-l" x="135" y="460" text-anchor="start">cache, enqueue</text>
+<path class="dg-e" d="M210 568 L278 568" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M450 568 L518 568" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M620 546 L620 522" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M450 320 L518 320" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M720 173 L788 173" marker-end="url(#tmwa-arr)"/>
+<path class="dg-e" d="M450 436 L788 436" marker-end="url(#tmwa-arr)"/>
+<text class="dg-l" x="620" y="428" text-anchor="middle">HMAC-signed, retried</text>
+<path class="dg-e" d="M740 305 L788 305" marker-end="url(#tmwa-arr)"/>
+</svg>

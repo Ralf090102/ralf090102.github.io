@@ -1,7 +1,9 @@
 // All site content lives here. To add a project, add one object to PROJECTS.
 // Required: id, title, kind, oneLiner. Everything else is optional and only renders if present.
 // The array order is the display order on the index.
-// figure: { type: "video", src, poster, caption, ratio?, sound? }  (ratio: "w / h", defaults to 16 / 9) | { type: "image", src, alt, caption }
+// stats: [{ value, label }]  A row of key numbers under the figure.
+// built/results items: a string, or { text, chart } to put a chart under that one claim (chart takes max? to set the scale).
+// figure: { type: "video", src, poster, caption, ratio?, sound? }  (ratio: "w / h", defaults to 16 / 9; taller than wide renders as a phone frame) | { type: "image", src, alt, caption } | { type: "diagram", src: "assets/<id>.svg", caption }
 //       | { type: "chart", unit, bars: [{ label, value, highlight? }], caption }
 
 window.PROJECTS = [
@@ -20,9 +22,36 @@ window.PROJECTS = [
       "A comparison of 8 pipeline configurations to locate where each answer went wrong."
     ],
     results: [
-      "A three-tier failure taxonomy: retrieval, generation, and cultural. Cultural failures are often silent.",
-      "An 18-28% English vs Filipino performance gap, traced to embedding misalignment in retrieval.",
+      "A three-tier failure taxonomy: retrieval, generation, and cultural. Cultural failures are often silent: the answer is grounded and scores fine on RAGAS, but it is culturally wrong.",
+      {
+        text: "Retrieval, not generation, is the bottleneck. Complete retrieval misses outnumber every generation failure mode combined by about 15 to 1.",
+        chart: {
+          unit: "%",
+          bars: [
+            { label: "Complete retrieval miss", value: 38.2, highlight: true },
+            { label: "All generation failures", value: 2.6 }
+          ],
+          caption: "Retrieval: mean across 8 configurations. Generation: the worst single configuration."
+        }
+      },
+      {
+        text: "Filipino queries miss retrieval almost twice as often as English ones, traced to embedding misalignment in BGE-M3.",
+        chart: {
+          unit: "%",
+          bars: [
+            { label: "English queries", value: 30 },
+            { label: "Filipino queries", value: 53, highlight: true }
+          ],
+          caption: "Complete-miss rate at baseline, rounded. Ranges across both generators: 29.4-30.3% and 52.3-52.8%."
+        }
+      },
       "Outstanding Thesis Award, and the basis of a paper accepted at PRICAI 2026."
+    ],
+    stats: [
+      { value: "2,917", label: "questions, English and Filipino" },
+      { value: "8", label: "pipeline configurations" },
+      { value: "23,336", label: "answers judged" },
+      { value: "35.0%", label: "of answers failed culturally" }
     ],
     figure: { type: "video", src: "assets/wiqas.mp4", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
     stack: ["Python", "BM25", "BGE-M3", "Ollama", "RAGAS"],
@@ -93,8 +122,20 @@ window.PROJECTS = [
     ],
     results: [
       "Live microphone testing found bugs that a spec review missed, including language misdetection on short clips and a gap in MCP scoping.",
-      "Benchmarking showed int8 was about 10x slower than fp32 on the target CPU (RTF 3.65 vs 0.31), so fp32 is the default."
+      {
+        text: "Benchmarking showed the quantized int8 Kokoro model was over 10x slower than fp32 on the target CPU, the opposite of what quantization usually buys, so fp32 is the default.",
+        chart: {
+          unit: " s",
+          max: 16,
+          bars: [
+            { label: "int8 (114 MB)", value: 14.4 },
+            { label: "fp32 (326 MB)", value: 1.2, highlight: true }
+          ],
+          caption: "Time to synthesize a 4-second clip, reproduced 3 times. Lower is better."
+        }
+      }
     ],
+    figure: { type: "diagram", src: "assets/eruvoice.svg", caption: "One turn. A keyword router handles cancel and local commands without calling Claude. Everything else goes to a single Claude Code session that can only reach the vault through one MCP server." },
     stack: ["Claude Code CLI", "MCP", "faster-whisper", "Kokoro-82M"]
   },
   {
@@ -111,8 +152,7 @@ window.PROJECTS = [
       "A rebuildable SQLite FTS5 search index over the markdown, which detects stale entries."
     ],
     results: [
-      "An 82-test suite, checked by breaking the path-traversal guard and the staleness check on purpose and confirming the tests caught both.",
-      "Found and fixed a memory-sync hook that had silently done nothing since launch because of a swallowed exception."
+      "An 82-test suite, checked by breaking the path-traversal guard and the staleness check on purpose and confirming the tests caught both."
     ],
     stack: ["Python", "MCP", "SQLite FTS5", "pytest"],
     repo: "https://github.com/Ralf090102/Erudition"
@@ -126,13 +166,15 @@ window.PROJECTS = [
     oneLiner: "Typed RAG pipeline stages that an agent can call directly, instead of reading scripts and asking for pasted output.",
     problem: "When an agent works on a RAG pipeline, it usually reads the code or asks a person to run a script and paste the output. Both are slow and lose structure.",
     built: [
-      "One interface for retrieve, rerank, generate, and eval stages, exposed as MCP tools: list_stages, get_stage_config, set_stage_config, run_stage, run_pipeline.",
+      "One typed interface for retrieve, rerank, and eval stages, exposed as MCP tools: list_stages, get_stage_config, set_stage_config, run_stage, run_pipeline.",
+      "Each stage runs the target project's own Python environment as a subprocess and talks JSON over stdin and stdout, so Lyra itself stays dependency-light.",
       "An eval stage (RAGAS answer similarity) to show the interface also works for stages that call a live LLM."
     ],
     results: [
       "Works with two codebases of different shapes: WiQAS (scripts) and Orion (a FastAPI service), with no changes to shared code.",
       "Scoped down from a visual node-canvas idea to the typed layer, which is what actually saves an agent time."
     ],
+    figure: { type: "diagram", src: "assets/lyra.svg", caption: "Two projects with different shapes behind one interface. Wrapping Orion took new adapter files only; the core, the executor, and the shared runner were not changed." },
     stack: ["Python", "MCP", "RAGAS"],
     repo: "https://github.com/Ralf090102/lyra-mcp"
   },
@@ -145,9 +187,11 @@ window.PROJECTS = [
     oneLiner: "Paste a job posting, and a local model extracts the fields and flags red flags.",
     built: [
       "A Laravel 13 API with Sanctum authentication and a React interface with search, filtering, and sorting.",
-      "Local Ollama extraction that scores each posting against a personal vetting rubric."
+      "Local Ollama extraction that scores each posting against a personal vetting rubric.",
+      "An auto-apply pipeline: n8n pulls listings from JSearch, a local model screens out non-matches and tailors a resume for each match, and Proteus renders it to PDF. A Claude Code skill then reviews the queue and submits through Indeed's Easy Apply, under a daily cap, and stops to ask on salary or unfamiliar screening questions."
     ],
     results: ["Taken from a new Laravel install to a working app in two days, to learn the stack for a target role."],
+    figure: { type: "diagram", src: "assets/job-tracker.svg", caption: "The whole system. The React app is for manual tracking. The auto-apply pipeline ingests listings through n8n, tailors a resume for each match, and hands the queue to Claude Code for review and submission." },
     stack: ["Laravel", "PHP", "React", "Ollama"],
     repo: "https://github.com/Ralf090102/Job-Application-Tracker"
   },
@@ -162,7 +206,12 @@ window.PROJECTS = [
       "A converter registry where each new format pair is a two-line addition. Three pairs were added after v1 without touching the core.",
       "Multi-file merging through Windows Send To, the one shell mechanism that passes a whole selection to a single process."
     ],
-    results: ["240 unit and 8 integration tests passing."],
+    figure: { type: "video", src: "assets/proteus.mp4", poster: "assets/proteus.jpg", ratio: "990 / 694", caption: "A .docx converted to PDF from the right-click menu, then three PDFs merged into one through Send To. Waits are sped up." },
+    stats: [
+      { value: "240", label: "unit tests" },
+      { value: "8", label: "integration tests" },
+      { value: "2 lines", label: "to add a format pair" }
+    ],
     stack: ["Python", "Windows shell"],
     repo: "https://github.com/Ralf090102/Proteus"
   },
@@ -174,9 +223,15 @@ window.PROJECTS = [
     context: "Learning project",
     oneLiner: "A task manager built to learn Kubernetes and GitOps from start to finish.",
     built: [
-      "Moved from a monolith to 8 microservices across 9 container images.",
+      "Split a Next.js monolith into microservices, each with its own image and Helm templates.",
       "ArgoCD canary rollouts, with Prometheus, Grafana, and Loki for observability."
     ],
+    stats: [
+      { value: "8", label: "microservices" },
+      { value: "9", label: "container images per commit" },
+      { value: "5", label: "Prometheus alert rules" }
+    ],
+    figure: { type: "diagram", src: "assets/tmwa.svg", caption: "The whole system. GitHub Actions builds the images, ArgoCD syncs the Helm chart into the cluster, and the Next.js app fans out to the services behind the ingress." },
     stack: ["Kubernetes", "ArgoCD", "Prometheus", "Grafana"],
     repo: "https://github.com/Ralf090102/Task-Manager-Web-Application"
   },
@@ -241,7 +296,14 @@ window.PROJECTS = [
     year: 2024,
     context: "Personal project",
     oneLiner: "A music player in Kotlin with an expandable player and media controls.",
-    stack: ["Kotlin", "ExoPlayer"],
+    built: [
+      "A repository layer that reads songs from the device's local storage and caches them in a Room database.",
+      "Playback on ExoPlayer inside a MediaSession foreground service, so music keeps playing with notification and lock-screen controls.",
+      "An expandable player: drag down to shrink it to a mini bar, tap to bring it back.",
+      "MVVM with ViewModel and LiveData, Dagger Hilt for dependency injection, and a Preference Screen for settings."
+    ],
+    figure: { type: "video", src: "assets/sonusync.mp4", poster: "assets/sonusync.jpg", ratio: "540 / 1200", caption: "Songs, artists, albums, search, and lock-screen media controls. Played at 1.5x." },
+    stack: ["Kotlin", "ExoPlayer", "Room", "Dagger Hilt"],
     repo: "https://github.com/Ralf090102/SonuSync"
   }
 ];

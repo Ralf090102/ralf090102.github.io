@@ -1,0 +1,51 @@
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" aria-label="System diagram of EruVoice: push-to-talk or a wake word starts recording, faster-whisper transcribes it, a keyword router handles cancel and local commands itself and sends everything else to Claude Code in print mode, which reaches the notes vault only through the eru MCP server; replies are spoken by Piper or Kokoro.">
+<defs><marker id="eruvoice-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrow" d="M0 1 L9 5 L0 9 z"/></marker></defs>
+<rect class="dg-box" x="20" y="40" width="170" height="56" rx="6"/>
+<text class="dg-t" x="32" y="65">Push-to-talk</text>
+<text class="dg-s" x="32" y="83">hold F9</text>
+<rect class="dg-box" x="20" y="144" width="170" height="56" rx="6"/>
+<text class="dg-t" x="32" y="169">Wake word</text>
+<text class="dg-s" x="32" y="187">&quot;Hey Eru&quot;</text>
+<rect class="dg-box" x="215" y="88" width="175" height="64" rx="6"/>
+<text class="dg-t" x="227" y="117">Microphone</text>
+<text class="dg-s" x="227" y="135">VAD trims silence</text>
+<rect class="dg-box" x="410" y="88" width="175" height="64" rx="6"/>
+<text class="dg-t" x="422" y="117">faster-whisper</text>
+<text class="dg-s" x="422" y="135">speech to text, CPU</text>
+<rect class="dg-box" x="605" y="60" width="175" height="120" rx="6"/>
+<text class="dg-t" x="617" y="88">Keyword router</text>
+<text class="dg-s" x="617" y="106">1. cancel phrase</text>
+<text class="dg-s" x="617" y="124">2. &quot;Command, &lt;name&gt;&quot;</text>
+<text class="dg-s" x="617" y="142">3. anything else</text>
+<rect class="dg-box dg-hi" x="800" y="60" width="180" height="120" rx="6"/>
+<text class="dg-t" x="812" y="88">Claude Code, -p</text>
+<text class="dg-s" x="812" y="106">one resumed session</text>
+<text class="dg-s" x="812" y="124">input may be misheard</text>
+<text class="dg-s" x="812" y="142">only the eru MCP tool</text>
+<rect class="dg-box" x="800" y="290" width="180" height="64" rx="6"/>
+<text class="dg-t" x="812" y="319">eru MCP server</text>
+<text class="dg-s" x="812" y="337">Erudition</text>
+<rect class="dg-box" x="800" y="390" width="180" height="56" rx="6"/>
+<text class="dg-t" x="812" y="415">Eru vault</text>
+<text class="dg-s" x="812" y="433">read, create, edit</text>
+<rect class="dg-box" x="500" y="290" width="200" height="64" rx="6"/>
+<text class="dg-t" x="512" y="319">Text to speech</text>
+<text class="dg-s" x="512" y="337">Piper or Kokoro-82M</text>
+<rect class="dg-box" x="215" y="290" width="175" height="64" rx="6"/>
+<text class="dg-t" x="227" y="319">Speaker</text>
+<text class="dg-s" x="227" y="337">a key press cuts it off</text>
+<path class="dg-e" d="M190 68 L202 68 L202 172 L190 172"/>
+<path class="dg-e" d="M202 120 L213 120" marker-end="url(#eruvoice-arr)"/>
+<path class="dg-e" d="M390 120 L408 120" marker-end="url(#eruvoice-arr)"/>
+<path class="dg-e" d="M585 120 L603 120" marker-end="url(#eruvoice-arr)"/>
+<path class="dg-e" d="M780 120 L798 120" marker-end="url(#eruvoice-arr)"/>
+<path class="dg-e" d="M890 180 L890 288" marker-end="url(#eruvoice-arr)"/>
+<text class="dg-l" x="900" y="240" text-anchor="start">vault tools</text>
+<path class="dg-e" d="M890 354 L890 388" marker-end="url(#eruvoice-arr)"/>
+<path class="dg-e" d="M800 160 L790 160 L790 322"/>
+<path class="dg-e" d="M790 322 L702 322" marker-end="url(#eruvoice-arr)"/>
+<text class="dg-l" x="745" y="314" text-anchor="middle">reply</text>
+<path class="dg-e" d="M650 180 L650 288" marker-end="url(#eruvoice-arr)"/>
+<text class="dg-l" x="640" y="240" text-anchor="end">cancel ack, local commands</text>
+<path class="dg-e" d="M500 322 L392 322" marker-end="url(#eruvoice-arr)"/>
+</svg>

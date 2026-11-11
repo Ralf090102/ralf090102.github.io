@@ -1,0 +1,70 @@
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 594" role="img" aria-label="System diagram of the Job Application Tracker: a React app and two auto-apply clients (an n8n workflow and Claude Code skills) talk to a Laravel API, which uses SQLite, a local Ollama model, a queue worker, and the Proteus PDF renderer.">
+<defs><marker id="jat-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrow" d="M0 1 L9 5 L0 9 z"/></marker></defs>
+<text class="dg-k" x="20" y="30">OUTSIDE</text>
+<text class="dg-k" x="230" y="30">CLIENTS</text>
+<text class="dg-k" x="560" y="30">BACKEND</text>
+<text class="dg-k" x="800" y="30">LOCAL SERVICES</text>
+<rect class="dg-frame" x="214" y="196" width="222" height="386" rx="8"/>
+<text class="dg-k" x="424" y="216" text-anchor="end">AUTO-APPLY, V2</text>
+<rect class="dg-box" x="20" y="60" width="150" height="64" rx="6"/>
+<text class="dg-t" x="32" y="89">You</text>
+<text class="dg-s" x="32" y="107">in a browser</text>
+<rect class="dg-box" x="20" y="230" width="150" height="64" rx="6"/>
+<text class="dg-t" x="32" y="259">JSearch API</text>
+<text class="dg-s" x="32" y="277">job listings</text>
+<rect class="dg-box" x="20" y="380" width="150" height="64" rx="6"/>
+<text class="dg-t" x="32" y="409">Indeed</text>
+<text class="dg-s" x="32" y="427">Easy Apply</text>
+<rect class="dg-box" x="230" y="60" width="190" height="64" rx="6"/>
+<text class="dg-t" x="242" y="89">React 19 SPA</text>
+<text class="dg-s" x="242" y="107">Vite, Tailwind</text>
+<rect class="dg-box" x="230" y="230" width="190" height="64" rx="6"/>
+<text class="dg-t" x="242" y="259">n8n workflow</text>
+<text class="dg-s" x="242" y="277">always-on container</text>
+<rect class="dg-box" x="230" y="380" width="190" height="64" rx="6"/>
+<text class="dg-t" x="242" y="409">Claude Code skills</text>
+<text class="dg-s" x="242" y="427">drives Chrome</text>
+<rect class="dg-box" x="230" y="500" width="190" height="64" rx="6"/>
+<text class="dg-t" x="242" y="529">Eru vault</text>
+<text class="dg-s" x="242" y="547">application log</text>
+<rect class="dg-box dg-hi" x="560" y="60" width="170" height="384" rx="6"/>
+<text class="dg-t" x="572" y="88">Laravel 13 API</text>
+<text class="dg-s" x="572" y="106">PHP 8.4</text>
+<text class="dg-s" x="572" y="124">Sanctum session auth</text>
+<text class="dg-s" x="572" y="142">posting extraction</text>
+<text class="dg-s" x="572" y="160">red-flag scoring</text>
+<text class="dg-s" x="572" y="178">fit matching</text>
+<text class="dg-s" x="572" y="196">review queue</text>
+<text class="dg-s" x="572" y="214">daily submit cap</text>
+<rect class="dg-box" x="800" y="60" width="180" height="64" rx="6"/>
+<text class="dg-t" x="812" y="89">SQLite</text>
+<text class="dg-s" x="812" y="107">all app data</text>
+<rect class="dg-box" x="800" y="170" width="180" height="64" rx="6"/>
+<text class="dg-t" x="812" y="199">Ollama, mistral</text>
+<text class="dg-s" x="812" y="217">runs locally</text>
+<rect class="dg-box" x="800" y="280" width="180" height="64" rx="6"/>
+<text class="dg-t" x="812" y="309">Queue worker</text>
+<text class="dg-s" x="812" y="327">tailors each resume</text>
+<rect class="dg-box" x="800" y="390" width="180" height="64" rx="6"/>
+<text class="dg-t" x="812" y="419">Proteus CLI</text>
+<text class="dg-s" x="812" y="437">Markdown to PDF</text>
+<path class="dg-e" d="M170 92 L228 92" marker-end="url(#jat-arr)"/>
+<path class="dg-e" d="M420 92 L558 92" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="490" y="84" text-anchor="middle">JSON, session</text>
+<path class="dg-e" d="M230 262 L172 262" marker-end="url(#jat-arr)"/>
+<path class="dg-e" d="M420 262 L558 262" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="490" y="254" text-anchor="middle">POST ingest, token</text>
+<path class="dg-e" d="M230 412 L172 412" marker-end="url(#jat-arr)"/>
+<path class="dg-e" d="M420 412 L558 412" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="490" y="404" text-anchor="middle">review API</text>
+<path class="dg-e" d="M325 444 L325 498" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="335" y="476" text-anchor="start">logs submits</text>
+<path class="dg-e" d="M730 92 L798 92" marker-end="url(#jat-arr)"/>
+<path class="dg-e" d="M730 202 L798 202" marker-end="url(#jat-arr)"/>
+<path class="dg-e" d="M730 312 L798 312" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="765" y="304" text-anchor="middle">dispatch</text>
+<path class="dg-e" d="M890 280 L890 236" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="900" y="262" text-anchor="start">tailor</text>
+<path class="dg-e" d="M890 344 L890 388" marker-end="url(#jat-arr)"/>
+<text class="dg-l" x="900" y="371" text-anchor="start">render</text>
+</svg>
