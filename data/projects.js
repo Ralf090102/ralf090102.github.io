@@ -1,14 +1,28 @@
 // All site content lives here. To add a project, add one object to PROJECTS.
-// Required: id, title, kind, oneLiner. Everything else is optional and only renders if present.
-// The array order is the display order on the index.
-// stats: [{ value, label }]  A row of key numbers under the figure.
+// Required: id, title, kind, area, oneLiner. Everything else is optional and only renders if present.
+// The index lists projects area by area (in AREAS order), keeping this file's order inside each area.
+// area: one of the AREAS ids below; it drives the index grouping and the filter buttons.
+// featured: true moves a project out of the table into a large card at the top of the index.
+// stats: [{ value, label, highlight? }]  A row of key numbers under the figure; highlight colours one of them.
 // built/results items: a string, or { text, chart } to put a chart under that one claim (chart takes max? to set the scale).
-// figure: { type: "video", src, poster, caption, ratio?, sound? }  (ratio: "w / h", defaults to 16 / 9; taller than wide renders as a phone frame) | { type: "image", src, alt, caption } | { type: "diagram", src: "assets/<id>.svg", caption }
+// figure: { type: "video", src, poster, caption, ratio?, sound? }  (ratio: "w / h"; taller than wide renders as a phone frame)
+//       | { type: "image", src, alt, caption } | { type: "diagram", src: "assets/<id>.svg", caption }
 //       | { type: "chart", unit, bars: [{ label, value, highlight? }], caption }
+
+window.AREAS = [
+  { id: "ai", name: "AI and RAG systems", short: "AI and RAG" },
+  { id: "agents", name: "Agent infrastructure", short: "Agents" },
+  { id: "infra", name: "Infrastructure and tools", short: "Infrastructure" },
+  { id: "client", name: "Client work", short: "Client" },
+  { id: "research", name: "Research", short: "Research" },
+  { id: "mobile", name: "Mobile", short: "Mobile" }
+];
 
 window.PROJECTS = [
   {
     id: "wiqas",
+    area: "ai",
+    featured: true,
     title: "WiQAS",
     kind: "RAG / evaluation",
     year: 2025,
@@ -51,14 +65,16 @@ window.PROJECTS = [
       { value: "2,917", label: "questions, English and Filipino" },
       { value: "8", label: "pipeline configurations" },
       { value: "23,336", label: "answers judged" },
-      { value: "35.0%", label: "of answers failed culturally" }
+      { value: "35.0%", label: "of answers failed culturally", highlight: true }
     ],
-    figure: { type: "video", src: "assets/wiqas.mp4", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
+    figure: { type: "video", src: "assets/wiqas.mp4?v=2", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
     stack: ["Python", "BM25", "BGE-M3", "Ollama", "RAGAS"],
     repo: "https://github.com/Ralf090102/WiQAS"
   },
   {
     id: "lex",
+    area: "ai",
+    featured: true,
     title: "Lex",
     kind: "Ablation study",
     year: 2026,
@@ -88,6 +104,7 @@ window.PROJECTS = [
   },
   {
     id: "orion",
+    area: "ai",
     title: "Orion",
     kind: "Local RAG assistant",
     year: 2025,
@@ -103,12 +120,13 @@ window.PROJECTS = [
       "Installs and runs without a Python setup on the user's machine.",
       "Fixed packaging bugs, such as CORS and static-adapter issues, that only appear when a Python backend ships inside a desktop app."
     ],
-    figure: { type: "video", src: "assets/orion.mp4", poster: "assets/orion.jpg", ratio: "1440 / 756", sound: true, caption: "A question answered from local course notes, with page citations and the reply read aloud." },
+    figure: { type: "video", src: "assets/orion.mp4?v=2", poster: "assets/orion.jpg", ratio: "1440 / 756", sound: true, caption: "A question answered from local course notes, with page citations and the reply read aloud." },
     stack: ["Python", "FastAPI", "ChromaDB", "SvelteKit", "Tauri"],
     repo: "https://github.com/Ralf090102/Orion"
   },
   {
     id: "eruvoice",
+    area: "ai",
     title: "EruVoice",
     kind: "Voice agent",
     year: 2026,
@@ -140,6 +158,7 @@ window.PROJECTS = [
   },
   {
     id: "erudition",
+    area: "agents",
     title: "Erudition",
     kind: "MCP memory server",
     year: 2026,
@@ -159,6 +178,7 @@ window.PROJECTS = [
   },
   {
     id: "lyra",
+    area: "agents",
     title: "Lyra",
     kind: "MCP pipeline tools",
     year: 2026,
@@ -180,6 +200,7 @@ window.PROJECTS = [
   },
   {
     id: "job-tracker",
+    area: "ai",
     title: "Job Application Tracker",
     kind: "Full stack + LLM",
     year: 2026,
@@ -197,6 +218,7 @@ window.PROJECTS = [
   },
   {
     id: "proteus",
+    area: "infra",
     title: "Proteus",
     kind: "CLI tool",
     year: 2026,
@@ -217,6 +239,7 @@ window.PROJECTS = [
   },
   {
     id: "tmwa",
+    area: "infra",
     title: "TMWA",
     kind: "Kubernetes / GitOps",
     year: 2026,
@@ -237,6 +260,7 @@ window.PROJECTS = [
   },
   {
     id: "anito",
+    area: "research",
     title: "Anito-3DBenchmark",
     kind: "Rendering benchmark",
     year: 2025,
@@ -251,6 +275,7 @@ window.PROJECTS = [
   },
   {
     id: "voyagar",
+    area: "research",
     title: "Project-VoyagAR",
     kind: "AR authoring tool",
     year: 2025,
@@ -265,6 +290,7 @@ window.PROJECTS = [
   },
   {
     id: "ggcn",
+    area: "client",
     title: "GGCN Website",
     kind: "Client web app",
     year: 2025,
@@ -278,6 +304,7 @@ window.PROJECTS = [
   },
   {
     id: "gabay",
+    area: "client",
     title: "GABAY",
     kind: "Client web app",
     year: 2024,
@@ -291,6 +318,7 @@ window.PROJECTS = [
   },
   {
     id: "sonusync",
+    area: "mobile",
     title: "SonuSync",
     kind: "Android app",
     year: 2024,

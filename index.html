@@ -7,53 +7,78 @@
   <meta name="description" content="Ralf Hernandez, software engineer working on LLM retrieval, evaluation, and agent tooling.">
   <meta property="og:title" content="Ralf Hernandez">
   <meta property="og:description" content="Software engineer working on LLM retrieval, evaluation, and agent tooling.">
-  <meta name="theme-color" content="#f4f3ef" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1011" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0D0E0D">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="index">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar wrap">
-    <a href="./" class="mark" aria-label="Ralf Hernandez, home">RH</a>
-    <nav aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#papers">Papers</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="shell">
+    <aside class="side">
+      <div class="brand">
+        <span class="sq" aria-hidden="true"></span>
+        <a class="brand-name" href="./">Ralf Hernandez</a>
+        <p class="brand-tag">Software engineer. LLM retrieval, evaluation, and agent tooling.</p>
+      </div>
+      <nav class="side-nav" aria-label="Sections">
+        <a href="#work"><span>01</span>Work</a>
+        <a href="#papers"><span>02</span>Papers</a>
+        <a href="#contact"><span>03</span>Contact</a>
+      </nav>
+      <dl class="side-stats" data-stats></dl>
+      <div class="side-contact" id="contact">
+        <p class="label">Contact</p>
+        <a class="email" href="mailto:ralf.hernandez090102@gmail.com">ralf.hernandez090102@gmail.com</a>
+        <p class="links"><a href="https://github.com/Ralf090102" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ralf-hernandez" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+    </aside>
 
-  <main id="main">
-    <section class="intro wrap">
-      <h1 class="name">Ralf Hernandez</h1>
-      <p class="role">Software engineer working on LLM retrieval, evaluation, and agent tooling.</p>
-    </section>
+    <main id="main" class="content">
+      <header class="hero">
+        <svg class="rings" aria-hidden="true" viewBox="0 0 480 480" fill="none"><g><circle cx="480" cy="0" r="80"></circle><circle cx="480" cy="0" r="160"></circle><circle cx="480" cy="0" r="320"></circle><circle cx="480" cy="0" r="400"></circle><circle cx="480" cy="0" r="479"></circle></g><circle class="ring-hi" cx="480" cy="0" r="240"></circle></svg>
+        <p class="kicker" id="kicker">Selected work</p>
+        <h1 class="hero-title">Software engineer working on LLM retrieval, evaluation, and agent tooling.</h1>
+        <dl class="hero-stats" data-stats></dl>
+      </header>
 
-    <section id="work" class="wrap" aria-labelledby="work-h">
-      <h2 id="work-h" class="section-h">Work</h2>
-      <ol class="index" id="index"></ol>
-      <noscript><p>The project list needs JavaScript. All source code is on <a href="https://github.com/Ralf090102">GitHub</a>.</p></noscript>
-    </section>
+      <section class="block-stack" aria-labelledby="feat-h" id="featured-section">
+        <h2 id="feat-h" class="label">Featured</h2>
+        <div class="feat-grid" id="featured"></div>
+      </section>
 
-    <section id="papers" class="wrap" aria-labelledby="papers-h">
-      <h2 id="papers-h" class="section-h">Papers</h2>
-      <ol class="papers" id="papers-list"></ol>
-    </section>
-  </main>
+      <section class="block-stack" id="work" aria-labelledby="all-h">
+        <div class="list-head">
+          <h2 id="all-h" class="label">All projects</h2>
+          <div class="filters" role="group" aria-label="Filter by area" id="filters"></div>
+        </div>
+        <div class="table-wrap">
+          <div class="table">
+            <div class="t-row t-head" aria-hidden="true"><span>No.</span><span>Project</span><span>Area</span><span>Kind</span><span>Year</span></div>
+            <ul class="rows" id="rows"></ul>
+            <p class="empty" id="empty" hidden>No other projects in this area. See Featured above.</p>
+          </div>
+        </div>
+        <noscript><p>The project list needs JavaScript. All source code is on <a href="https://github.com/Ralf090102">GitHub</a>.</p></noscript>
+      </section>
 
-  <footer id="contact" class="footer wrap">
-    <h2 class="section-h">Contact</h2>
-    <a class="email" href="mailto:ralf.hernandez090102@gmail.com">ralf.hernandez090102@gmail.com</a>
-    <ul class="elsewhere">
-      <li><a href="https://github.com/Ralf090102" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/ralf-hernandez" target="_blank" rel="noopener">LinkedIn</a></li>
-    </ul>
-  </footer>
+      <section class="block-stack" id="papers" aria-labelledby="pap-h">
+        <h2 id="pap-h" class="label">Papers</h2>
+        <div class="papers" id="papers-list"></div>
+      </section>
 
-  <div class="preview" id="preview" aria-hidden="true"></div>
+      <section class="contact-card" id="contact-card" aria-labelledby="contact-h">
+        <span class="sq" aria-hidden="true"></span>
+        <h2 id="contact-h" class="label">Contact</h2>
+        <a class="email" href="mailto:ralf.hernandez090102@gmail.com">ralf.hernandez090102@gmail.com</a>
+        <p class="links"><a href="https://github.com/Ralf090102" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ralf-hernandez" target="_blank" rel="noopener">LinkedIn</a></p>
+      </section>
+
+      <footer class="foot"><span><span class="sq" aria-hidden="true"></span>Ralf Hernandez, <span data-year>2026</span></span></footer>
+    </main>
+  </div>
 
   <script src="data/projects.js"></script>
   <script src="app.js"></script>
