@@ -65,7 +65,7 @@ window.PROJECTS = [
     stats: [
       { value: "2,917", label: "questions, English and Filipino" },
       { value: "8", label: "pipeline configurations" },
-      { value: "23,336", label: "answers judged" },
+      { value: "23,321", label: "answers judged" },
       { value: "35.0%", label: "of answers failed culturally", highlight: true }
     ],
     figure: { type: "video", src: "assets/wiqas.mp4?v=2", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
@@ -167,7 +167,7 @@ window.PROJECTS = [
     oneLiner: "Portable, git-backed memory for AI agents, stored as markdown that people can read.",
     problem: "Agent memory is usually locked inside one tool or one machine. Erudition stores it as plain markdown in a git repo, and any MCP client can use it.",
     built: [
-      "An MCP server with 9 tools: file reading and writing plus memory operations that follow a memory taxonomy.",
+      "An MCP server with 10 tools: file reading, writing, and targeted edits, plus memory operations that follow a memory taxonomy.",
       "Claude Code SessionStart and Stop hooks that load context at the start of a session and sync memory after each turn.",
       "A rebuildable SQLite FTS5 search index over the markdown, which detects stale entries."
     ],
