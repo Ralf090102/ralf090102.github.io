@@ -283,7 +283,7 @@ window.PROJECTS = [
     oneLiner: "A no-code tool for building AR tabletop quizzes on PC, played on an Android app.",
     built: [
       "Built the editor's interface panels with Dear ImGui.",
-      "Improved performance by refactoring and cleaning up parts of the codebase.",
+      "Ran QA with 10 user testers who evaluated the tool and reported issues.",
       "Created a skeleton AR quiz that uses every feature, as an end-to-end check that each one works."
     ],
     results: [
@@ -321,7 +321,7 @@ window.PROJECTS = [
       "Dynamic pages with Handlebars.js, and client data in MongoDB.",
       "Worked with the team on the payment feature."
     ],
-    figure: { type: "image", src: "assets/gabay.jpg", alt: "GABAY nonprofit banner", caption: "The client's banner: GABAY, a nonprofit in Caloocan City." },
+    figure: { type: "image", src: "assets/gabay.jpg?v=2", alt: "Collage of GABAY's community outreach and HIV testing events", caption: "GABAY's outreach work in Caloocan City, the nonprofit the site was built for." },
     stack: ["Handlebars.js", "MongoDB", "Vercel"]
   },
   {
