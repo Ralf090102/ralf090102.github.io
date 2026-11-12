@@ -281,10 +281,16 @@ window.PROJECTS = [
     year: 2025,
     context: "Internship, DLSU GameLab",
     oneLiner: "A no-code tool for building AR tabletop quizzes on PC, played on an Android app.",
+    built: [
+      "Built the editor's interface panels with Dear ImGui.",
+      "Improved performance by refactoring and cleaning up parts of the codebase.",
+      "Created a skeleton AR quiz that uses every feature, as an end-to-end check that each one works."
+    ],
     results: [
       "Published in Entertainment Computing, vol. 58 (2026).",
       "Exhibited at PGDX 2025, Indie Stars."
     ],
+    figure: { type: "image", src: "assets/voyagar.png", alt: "VoyagAR 3D Editor main menu", caption: "The VoyagAR 3D Editor, where quizzes are authored on PC before being played in AR on Android." },
     stack: ["Unity", "C#", "Vuforia", "Android"],
     repo: "https://github.com/DLSU-GAME-Lab/Project-VoyagAR"
   },
@@ -300,6 +306,7 @@ window.PROJECTS = [
       "Attendance tracking with filtering and reporting statistics.",
       "CI/CD with automatic deploys, a main/dev/feature branching workflow, and automated tests."
     ],
+    figure: { type: "image", src: "assets/ggcn.webp", alt: "Grace Gospel Church North logo banner", caption: "The client's banner: Grace Gospel Church North." },
     stack: ["SvelteKit", "Supabase", "Jest", "Cloudflare Pages"]
   },
   {
@@ -314,6 +321,7 @@ window.PROJECTS = [
       "Dynamic pages with Handlebars.js, and client data in MongoDB.",
       "Worked with the team on the payment feature."
     ],
+    figure: { type: "image", src: "assets/gabay.jpg", alt: "GABAY nonprofit banner", caption: "The client's banner: GABAY, a nonprofit in Caloocan City." },
     stack: ["Handlebars.js", "MongoDB", "Vercel"]
   },
   {
