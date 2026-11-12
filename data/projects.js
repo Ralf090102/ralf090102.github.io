@@ -33,7 +33,8 @@ window.PROJECTS = [
       "Hybrid retrieval combining BM25 with BGE-M3 embeddings.",
       "Generation with Gemma and SEA-LION through Ollama, chosen for real Filipino-language ability.",
       "A Cultural LLM Judge: a custom judge prompt and rubric used alongside RAGAS metrics.",
-      "A comparison of 8 pipeline configurations to locate where each answer went wrong."
+      "A comparison of 8 pipeline configurations to locate where each answer went wrong.",
+      "The SvelteKit frontend, and the deployment of the full system on Google Cloud Platform."
     ],
     results: [
       "A three-tier failure taxonomy: retrieval, generation, and cultural. Cultural failures are often silent: the answer is grounded and scores fine on RAGAS, but it is culturally wrong.",
@@ -68,7 +69,7 @@ window.PROJECTS = [
       { value: "35.0%", label: "of answers failed culturally", highlight: true }
     ],
     figure: { type: "video", src: "assets/wiqas.mp4?v=2", poster: "assets/wiqas.jpg", ratio: "1440 / 714", caption: "A Filipino question answered with cited sources and per-stage timings. The 23-second wait for the answer is sped up 8x." },
-    stack: ["Python", "BM25", "BGE-M3", "Ollama", "RAGAS"],
+    stack: ["Python", "BM25", "BGE-M3", "Ollama", "RAGAS", "SvelteKit", "GCP"],
     repo: "https://github.com/Ralf090102/WiQAS"
   },
   {
